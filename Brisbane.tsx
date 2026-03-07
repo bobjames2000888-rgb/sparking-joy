@@ -1,0 +1,204 @@
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Check, Zap, ShieldCheck, Sparkles, Waves, Award } from "lucide-react";
+import { scrollToSection } from "@/lib/scroll-utils";
+import classicSlatIcon from "@/assets/classic-slat.png";
+import verticalPicketIcon from "@/assets/vertical-picket.png";
+import privacyScreenIcon from "@/assets/privacy-screen.png";
+import decorativePanelIcon from "@/assets/decorative-panel.webp";
+const QUOTE_URL = "https://app.quotemyfence.com.au/#/step/1";
+const AluminumFencing = () => {
+  const handleQuoteClick = () => {
+    window.location.href = QUOTE_URL;
+  };
+  const handleViewStyles = () => {
+    scrollToSection("aluminium-styles");
+  };
+  const benefits = [{
+    icon: Zap,
+    title: "Lightweight & Strong",
+    description: "Modern aluminium design that's easy to install yet incredibly durable"
+  }, {
+    icon: ShieldCheck,
+    title: "100% Rust-Proof",
+    description: "Never worry about rust or corrosion, even in coastal environments"
+  }, {
+    icon: Sparkles,
+    title: "Sleek Modern Look",
+    description: "Contemporary powder-coated finish that elevates any property"
+  }, {
+    icon: Waves,
+    title: "Pool Compliant",
+    description: "Meets all Australian pool safety standards and regulations"
+  }];
+  const features = ["Premium powder-coated aluminium", "Available in 15+ modern colours", "Pool-safe certified installations", "Modular design for easy repairs", "UV and weather resistant"];
+  const styles = [{
+    name: "Classic Slat",
+    description: "Timeless horizontal design",
+    icon: classicSlatIcon
+  }, {
+    name: "Vertical Picket",
+    description: "Traditional elegance",
+    icon: verticalPicketIcon
+  }, {
+    name: "Privacy Screen",
+    description: "Maximum privacy",
+    icon: privacyScreenIcon
+  }, {
+    name: "Decorative Panel",
+    description: "Artistic modern style",
+    icon: decorativePanelIcon
+  }];
+  return <div className="min-h-screen bg-background">
+      <Header onQuoteClick={handleQuoteClick} />
+      
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0 accent-gradient opacity-10"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center space-x-2 bg-primary/10 px-4 py-2 rounded-full mb-6">
+                <Award className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium text-primary">Modern & Maintenance-Free</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+                Aluminium<br />
+                <span className="text-gradient">Fencing Solutions</span>
+              </h1>
+              <p className="text-lg text-muted-foreground mb-8">
+                Discover the perfect blend of modern aesthetics and lasting durability. 
+                Aluminium fencing is rust-proof, low maintenance, and built to last.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Button variant="quote" size="lg" onClick={handleQuoteClick}>
+                  Get 3 Free Quotes in Minutes
+                </Button>
+                <Button variant="outline" size="lg" onClick={handleViewStyles}>
+                  View Styles
+                </Button>
+              </div>
+              <div className="flex items-center space-x-6 mt-8 text-sm text-muted-foreground">
+                <div className="flex items-center space-x-2">
+                  <Check className="w-4 h-4 text-primary" />
+                  <span>Pool Certified</span>
+                </div>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elegant">
+                <img src="/lovable-uploads/aluminium-fence-hero.webp" alt="Aluminium Fence Installation" className="w-full h-full object-cover" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Why Choose Aluminium Fencing?
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              The ultimate modern fencing solution with zero maintenance and maximum style
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {benefits.map((benefit, index) => <Card key={index} className="hover-scale border-border/50">
+                <CardContent className="p-6">
+                  <div className="w-12 h-12 accent-gradient rounded-lg flex items-center justify-center mb-4">
+                    <benefit.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">{benefit.title}</h3>
+                  <p className="text-sm text-muted-foreground">{benefit.description}</p>
+                </CardContent>
+              </Card>)}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                Superior Quality & Zero Maintenance
+              </h2>
+              <p className="text-muted-foreground mb-8">
+                Aluminium fencing systems are engineered for Australian conditions, 
+                offering unmatched durability without any ongoing maintenance requirements.
+              </p>
+              <div className="space-y-4">
+                {features.map((feature, index) => <div key={index} className="flex items-start space-x-3">
+                    <div className="w-6 h-6 accent-gradient rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Check className="w-4 h-4 text-white" />
+                    </div>
+                    <span className="text-foreground">{feature}</span>
+                  </div>)}
+              </div>
+            </div>
+            <div className="relative">
+              <div className="aspect-square rounded-2xl overflow-hidden shadow-elegant">
+                <img src="/lovable-uploads/aluminium-fence-features.webp" alt="Aluminium Fencing Features" className="w-full h-full object-cover" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Styles Section */}
+      <section id="aluminium-styles" className="py-20 bg-muted/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Choose Your Style
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Modern designs to complement any architectural style
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {styles.map((style, index) => <Card key={index} className="hover-scale border-border/50">
+                <CardContent className="p-6 text-center">
+                  <img src={style.icon} alt={style.name} className="w-36 h-36 mx-auto mb-4 object-contain select-none" draggable="false" />
+                  <h3 className="text-lg font-semibold text-foreground mb-2">{style.name}</h3>
+                  <p className="text-sm text-muted-foreground">{style.description}</p>
+                </CardContent>
+              </Card>)}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="accent-gradient rounded-2xl p-12 shadow-elegant">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Ready to Install Your Aluminium Fence?
+            </h2>
+            <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              Get free quotes today and experience the modern elegance of aluminium fencing
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Button variant="secondary" size="lg" onClick={handleQuoteClick}>
+                Get 3 Free Quotes Now
+              </Button>
+              <a href="tel:0481752344" aria-label="Call 0481 752 344">
+                <Button variant="outline" size="lg" className="bg-white/10 text-white border-white/30 hover:bg-white/20">
+                  Call 0481 752 344
+                </Button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>;
+};
+export default AluminumFencing;
