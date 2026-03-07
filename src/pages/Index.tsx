@@ -1,12 +1,38 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Header from "@/components/Header";
+import HeroSection from "@/components/HeroSection";
+import HowItWorks from "@/components/HowItWorks";
+import FenceTypes from "@/components/FenceTypes";
+import ReviewsSection from "@/components/ReviewsSection";
+import FAQSection from "@/components/FAQSection";
+import Footer from "@/components/Footer";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
+
+const QUOTE_URL = "https://app.quotemyfence.com.au/#/step/1";
 
 const Index = () => {
+  useDocumentTitle("QuoteMyFence: Australia's #1 Fencing Quote Platform — Get 3 Free Quotes in Minutes");
+
+  const handleQuoteClick = () => {
+    window.location.href = QUOTE_URL;
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <Header onQuoteClick={handleQuoteClick} />
+      <main>
+        <HeroSection />
+        <HowItWorks onQuoteClick={handleQuoteClick} />
+        <div id="fence-types">
+          <FenceTypes onQuoteClick={handleQuoteClick} />
+        </div>
+        <div id="reviews">
+          <ReviewsSection />
+        </div>
+        <div id="faq">
+          <FAQSection onQuoteClick={handleQuoteClick} />
+        </div>
+      </main>
+      <Footer />
     </div>
   );
 };
